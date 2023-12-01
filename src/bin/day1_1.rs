@@ -5,11 +5,22 @@ fn main() {
 }
 
 fn run(input: &str) -> usize {
-    return 3;
+    let list = input.lines().map(|s| {
+        let numbers = s.chars().filter(|c| c.is_ascii_digit()).collect::<String>();
+        let first = numbers.chars().next().unwrap();
+        let last = numbers.chars().last().unwrap();
+        format!("{}{}", first, last).parse().unwrap()
+    });
+    let list = list.collect::<Vec<_>>();
+    dbg!(&list);
+    list.iter().sum()
 }
 
 #[test]
 fn sample() {
-    let input = r#""#;
-    assert_eq!(run(input), 4)
+    let input = r#"1abc2
+pqr3stu8vwx
+a1b2c3d4e5f
+treb7uchet"#;
+    assert_eq!(run(input), 142)
 }
