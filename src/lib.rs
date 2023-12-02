@@ -5,7 +5,7 @@ use regex::Match;
 
 /// # Examples
 /// ```
-/// # use advent_2021::blank_lines;
+/// # use advent_2023::blank_lines;
 /// let input = r#"hello
 /// there
 ///
@@ -39,7 +39,7 @@ pub fn lines(s: &str) -> Vec<&str> {
 
 /// # Examples
 /// ```
-/// # use advent_2021::manhattan_distance;
+/// # use advent_2023::manhattan_distance;
 /// assert_eq!(manhattan_distance(-6, 3), 9);
 /// ```
 pub fn manhattan_distance<I: num_traits::Num + num_traits::Signed>(x: I, y: I) -> I {
@@ -71,7 +71,7 @@ where
 
 /// # Examples
 /// ```
-/// # use advent_2021::digits;
+/// # use advent_2023::digits;
 /// assert_eq!(digits("134"), vec![1, 3, 4]);
 /// ```
 pub fn digits(num: &str) -> Vec<u32> {
@@ -84,7 +84,7 @@ pub fn number_digits(num: usize) -> Vec<u32> {
 
 /// # Examples
 /// ```
-/// # use advent_2021::number_to_binary;
+/// # use advent_2023::number_to_binary;
 /// assert_eq!(number_to_binary(1), vec![1]);
 /// assert_eq!(number_to_binary(2), vec![1, 0]);
 /// ```
@@ -97,7 +97,7 @@ pub fn number_to_binary(num: usize) -> Vec<u32> {
 
 /// # Examples
 /// ```
-/// # use advent_2021::{number_to_binary, pad_vectors};
+/// # use advent_2023::{number_to_binary, pad_vectors};
 /// assert_eq!(pad_vectors(&[number_to_binary(1), number_to_binary(2)], 0), vec![vec![0, 1], vec![1, 0]]);
 /// ```
 pub fn pad_vectors<T: Clone>(vs: &[Vec<T>], padding: T) -> Vec<Vec<T>> {
@@ -116,7 +116,7 @@ pub fn pad_vectors<T: Clone>(vs: &[Vec<T>], padding: T) -> Vec<Vec<T>> {
 
 /// # Examples
 /// ```
-/// # use advent_2021::extract_values;
+/// # use advent_2023::extract_values;
 /// let re = regex::Regex::new(r"(\w*) (\w*) bags contain (.*)\.").unwrap();
 /// assert_eq!(extract_values(&re, "muted tomato bags contain 1 bright brown bag."),
 /// vec!["muted", "tomato", "1 bright brown bag"]);
