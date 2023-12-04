@@ -16,7 +16,7 @@ fn run(input: &str) -> usize {
         let mut running_total = 0;
         let mut adjacent_symbol = false;
         while char_index < grid[line_index].len() {
-            match dbg!(grid[line_index][char_index]) {
+            match grid[line_index][char_index] {
                 c if c.is_numeric() => {
                     let num = c.to_digit(10).unwrap();
                     adjacent_symbol = adjacent_symbol || is_adjacent(line_index, char_index, &grid);
