@@ -27,15 +27,7 @@ fn run(input: &str) -> usize {
 }
 
 fn translate(seed_val: usize, maps: &[Map]) -> usize {
-    let mut item_type = "seed";
-    let mut value = seed_val;
-
-    while item_type != "location" {
-        let current_map = maps.iter().find(|map| map.from == item_type).unwrap();
-        item_type = &current_map.to;
-        value = current_map.translate(value);
-    }
-    value
+    maps.iter().fold(seed_val, |val, map| map.translate(val))
 }
 
 fn map_line() -> &'static regex::Regex {
