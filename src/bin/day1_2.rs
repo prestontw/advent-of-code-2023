@@ -12,7 +12,6 @@ fn run(input: &str) -> usize {
         format!("{}{}", first, last).parse().unwrap()
     });
     let list = list.collect::<Vec<_>>();
-    dbg!(&list);
     list.iter().sum()
 }
 
@@ -78,7 +77,6 @@ fn last_num(s: &str) -> i32 {
             }
         })
         .collect::<Vec<_>>();
-    dbg!(s, &founds);
     founds
         .into_iter()
         .max_by_key(|(value, pos)| *pos)

@@ -12,7 +12,6 @@ fn run(input: &str) -> usize {
         format!("{}{}", first, last).parse().unwrap()
     });
     let list = list.collect::<Vec<_>>();
-    dbg!(&list);
     list.iter().sum()
 }
 
