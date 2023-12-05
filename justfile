@@ -5,3 +5,6 @@ test:
 # runs the day
 dev day:
 	cargo watch -x "test --bin {{day}}" -x "run --bin {{day}}"
+
+run day:
+	cargo run --release --bin {{day}}
