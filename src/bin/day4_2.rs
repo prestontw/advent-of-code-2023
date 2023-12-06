@@ -20,8 +20,12 @@ fn run(input: &str) -> i32 {
             .filter(|number| winning_numbers.contains(number))
             .count();
         let current_count = scratch_card_counts[index];
-        for next_index in (index + 1)..(index + 1 + num_winners) {
-            scratch_card_counts[next_index] += current_count;
+        for item in scratch_card_counts
+            .iter_mut()
+            .skip(index + 1)
+            .take(num_winners)
+        {
+            *item += current_count;
         }
     });
     scratch_card_counts.into_iter().sum()

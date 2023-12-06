@@ -91,7 +91,7 @@ impl Range {
 
     fn translate(&self, source_number: usize) -> Option<usize> {
         if source_number >= self.source_start
-            && self.source_start + self.range_length - 1 >= source_number
+            && self.source_start + self.range_length > source_number
         {
             Some(source_number - self.source_start + self.dest_start)
         } else {

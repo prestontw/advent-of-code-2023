@@ -7,8 +7,8 @@ fn main() {
 fn run(input: &str) -> usize {
     let list = input.lines().map(|s| {
         let numbers = s;
-        let first = first_num(&numbers);
-        let last = last_num(&numbers);
+        let first = first_num(numbers);
+        let last = last_num(numbers);
         format!("{}{}", first, last).parse().unwrap()
     });
     let list = list.collect::<Vec<_>>();
@@ -36,13 +36,9 @@ fn first_num(s: &str) -> i32 {
         ("eight", 8),
         ("nine", 9),
     ];
-    let founds = needles.into_iter().filter_map(|needle| {
-        if let Some(position) = s.find(needle.0) {
-            Some((needle.1, position))
-        } else {
-            None
-        }
-    });
+    let founds = needles
+        .into_iter()
+        .filter_map(|needle| s.find(needle.0).map(|position| (needle.1, position)));
     founds.min_by_key(|(value, pos)| *pos).unwrap().0
 }
 
@@ -69,13 +65,7 @@ fn last_num(s: &str) -> i32 {
     ];
     let founds = needles
         .into_iter()
-        .filter_map(|needle| {
-            if let Some(position) = s.rfind(needle.0) {
-                Some((needle.1, position))
-            } else {
-                None
-            }
-        })
+        .filter_map(|needle| s.rfind(needle.0).map(|position| (needle.1, position)))
         .collect::<Vec<_>>();
     founds
         .into_iter()

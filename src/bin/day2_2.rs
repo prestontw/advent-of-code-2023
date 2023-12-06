@@ -62,7 +62,7 @@ struct Roll {
 fn parse_line(input: &str) -> Game {
     let capture_groups = extract_values(line_regex(), input);
     let id = capture_groups[0].parse::<usize>().unwrap();
-    let rolls = capture_groups[1].split(";").map(|show| {
+    let rolls = capture_groups[1].split(';').map(|show| {
         show.split(", ").fold(
             Roll {
                 green: 0,
