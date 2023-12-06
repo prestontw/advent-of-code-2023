@@ -9,14 +9,12 @@ fn run(input: &str) -> usize {
         .lines()
         .map(|line| line.chars().collect::<Vec<_>>())
         .collect::<Vec<_>>();
-    let mut line_index = 0;
     let mut total = 0;
-    while line_index < grid.len() {
-        let mut char_index = 0;
+    for (line_index, line) in grid.iter().enumerate() {
         let mut running_total = 0;
         let mut adjacent_symbol = false;
-        while char_index < grid[line_index].len() {
-            match grid[line_index][char_index] {
+        for (char_index, character) in line.iter().enumerate() {
+            match character {
                 c if c.is_numeric() => {
                     let num = c.to_digit(10).unwrap();
                     adjacent_symbol = adjacent_symbol || is_adjacent(line_index, char_index, &grid);
@@ -30,13 +28,11 @@ fn run(input: &str) -> usize {
                     adjacent_symbol = false;
                 }
             }
-            char_index += 1;
         }
         // Cleaning the remaining is a common pattern. I forgot it this year!
         if adjacent_symbol {
             total += running_total;
         }
-        line_index += 1;
     }
     total as usize
 }
