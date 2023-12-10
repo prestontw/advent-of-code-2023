@@ -26,7 +26,6 @@ fn run(input: &str) -> usize {
         .collect::<Vec<_>>();
 
     list.sort_unstable_by_key(|(h, _)| h.clone());
-    dbg!(&list);
     list.into_iter()
         .enumerate()
         .map(|(index, (_, bid))| (index + 1) * bid)
