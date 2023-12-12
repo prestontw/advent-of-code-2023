@@ -46,6 +46,13 @@ pub fn manhattan_distance<I: num_traits::Num + num_traits::Signed>(x: I, y: I) -
     x.abs() + y.abs()
 }
 
+pub fn manhattan_distance2d<I: num_traits::Num + num_traits::Signed>(
+    (x1, y1): (I, I),
+    (x2, y2): (I, I),
+) -> I {
+    (x1 - x2).abs() + (y1 - y2).abs()
+}
+
 pub fn manhattan_distance3d<I: num_traits::Num + num_traits::Signed>(
     (a, b, c): (I, I, I),
     (x, y, z): (I, I, I),
