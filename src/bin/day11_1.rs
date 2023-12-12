@@ -37,8 +37,6 @@ fn run(input: &str) -> i64 {
         })
         .collect::<Vec<_>>();
 
-    dbg!(&empty_rows, &empty_columns);
-
     galaxies.iter_mut().for_each(|(line_index, char_index)| {
         *line_index += empty_rows
             .iter()
@@ -53,7 +51,7 @@ fn run(input: &str) -> i64 {
     let mut sum = 0;
     for (i, galaxy) in galaxies.iter().enumerate() {
         for other_galaxy in galaxies.iter().skip(i + 1) {
-            sum += dbg!(manhattan_distance2d(*galaxy, *other_galaxy));
+            sum += manhattan_distance2d(*galaxy, *other_galaxy);
         }
     }
     sum
