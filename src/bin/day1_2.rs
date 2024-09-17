@@ -4,15 +4,15 @@ fn main() {
     dbg!(run(input));
 }
 
-fn run(input: &str) -> usize {
+fn run(input: &str) -> i32 {
     let list = input.lines().map(|s| {
         let numbers = s;
         let first = first_num(numbers);
         let last = last_num(numbers);
-        format!("{}{}", first, last).parse().unwrap()
+        first * 10 + last
     });
     let list = list.collect::<Vec<_>>();
-    list.iter().sum()
+    list.into_iter().sum()
 }
 
 fn first_num(s: &str) -> i32 {
@@ -39,7 +39,7 @@ fn first_num(s: &str) -> i32 {
     let founds = needles
         .into_iter()
         .filter_map(|needle| s.find(needle.0).map(|position| (needle.1, position)));
-    founds.min_by_key(|(value, pos)| *pos).unwrap().0
+    founds.min_by_key(|(_, pos)| *pos).unwrap().0
 }
 
 fn last_num(s: &str) -> i32 {
@@ -67,11 +67,7 @@ fn last_num(s: &str) -> i32 {
         .into_iter()
         .filter_map(|needle| s.rfind(needle.0).map(|position| (needle.1, position)))
         .collect::<Vec<_>>();
-    founds
-        .into_iter()
-        .max_by_key(|(value, pos)| *pos)
-        .unwrap()
-        .0
+    founds.into_iter().max_by_key(|(_, pos)| *pos).unwrap().0
 }
 
 #[test]
